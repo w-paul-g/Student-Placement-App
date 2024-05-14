@@ -1,0 +1,63 @@
+//// ViewModel for managing selected courses
+//class SelectedCoursesViewModel(
+//    var navController: NavHostController,
+//    private val context: Context,
+//    var firestore: FirebaseFirestore
+//) {
+//
+//    private val database: DatabaseReference = FirebaseDatabase.getInstance().reference.child("SelectedCourses")
+//    // Function to add selected courses to the database
+//    fun addSelectedCourses(selectedCourses: List<Course>) {
+//        // Clear existing data before adding new data (optional)
+//        database.removeValue()
+//        // Add selected courses to the database
+//        selectedCourses.forEach { course ->
+//            val courseId = course.courseId
+//            database.child(courseId).setValue(course)
+//        }
+//        Toast.makeText(context, "Selected courses saved", Toast.LENGTH_SHORT).show()
+//    }
+//    fun viewSelectedCourses(
+//        listOfCourses: (List<Course>) -> Unit
+//    ){
+//        val database: DatabaseReference = FirebaseDatabase.getInstance().reference.child("Course")
+//        val courses = mutableListOf<Course>()
+//        database.addValueEventListener(object : ValueEventListener {
+//            override fun onDataChange(snapshot: DataSnapshot) {
+//                snapshot.children.forEach { dataSnapshot ->
+//                    dataSnapshot.getValue(Course::class.java)?.let {
+//                        courses.add(it)
+//                    }
+//                }
+//                listOfCourses(courses)
+//            }
+//            override fun onCancelled(error: DatabaseError) {
+//                // Handle error
+//                Toast.makeText(context, error.message, Toast.LENGTH_SHORT).show()
+//            }
+//        })
+//    }
+//    // Function to retrieve selected courses from the database
+//    fun getSelectedCourses(listener: (List<Course>) -> Unit) {
+//        database.addListenerForSingleValueEvent(object : ValueEventListener {
+//            override fun onDataChange(snapshot: DataSnapshot) {
+//                val courses = mutableListOf<Course>()
+//                for (snap in snapshot.children) {
+//                    val course = snap.getValue(Course::class.java)
+//                    course?.let { courses.add(it) }
+//                }
+//                listener(courses)
+//            }
+//
+//            override fun onCancelled(error: DatabaseError) {
+//                Toast.makeText(context, "Error: ${error.message}", Toast.LENGTH_SHORT).show()
+//            }
+//        })
+//    }
+//
+//        // Function to remove a selected course from the database
+//    fun removeSelectedCourse(courseId: String) {
+//        database.child(courseId).removeValue()
+//        Toast.makeText(context, "Course removed", Toast.LENGTH_SHORT).show()
+//    }
+//}

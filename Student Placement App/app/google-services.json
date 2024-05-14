@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "236958780440",
+    "project_id": "student-placement-app1-00254",
+    "storage_bucket": "student-placement-app1-00254.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:236958780440:android:aa4d8ace5019191470476d",
+        "android_client_info": {
+          "package_name": "com.heps.studentplacementapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAI2d-1AuM9sxIzy1vZTbzK8rOw1eCUP_w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
