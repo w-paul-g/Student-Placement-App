@@ -1,5 +1,6 @@
 package com.heps.studentplacementapp.ui.screens.courses
 
+import android.widget.Toast
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -20,7 +21,6 @@ import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -30,6 +30,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import com.heps.studentplacementapp.data.CourseViewModel
 import com.heps.studentplacementapp.models.Course
 
@@ -47,8 +51,6 @@ fun UpdateCourse(
         contentAlignment = Alignment.Center
     ){
         val context = LocalContext.current
-        val course = Course()
-        val courseId = course.courseId
         val courseViewModel = CourseViewModel(
             navController = NavHostController(context),
             context = context
@@ -71,16 +73,37 @@ fun UpdateCourse(
         var courseNameState by remember {
             mutableStateOf("")
         }
-        LaunchedEffect(courseId) {
-            courseViewModel.updateCourse(
-                courseIdState = course.courseId,
-                institutionNameState = course.institutionName,
-                institutionTypeState = course.institutionType,
-                courseLevelState = course.courseLevel,
-                courseCategoryState = course.courseCategory,
+        var currentDataRef = FirebaseDatabase.getInstance().getReference()
+            .child("Courses/$courseId")
+        currentDataRef.addValueEventListener(object: ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                val course = snapshot.getValue(Course::class.java)
+                courseIdState = course!!.courseId
+                institutionNameState = course.institutionName
+                institutionTypeState = course.institutionType
+                courseLevelState = course.courseLevel
+                courseCategoryState = course.courseCategory
                 courseNameState = course.courseName
-            )
-        }
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                Toast.makeText(
+                    context,
+                    error.message,
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+        })
+//        LaunchedEffect(courseId) {
+//            courseViewModel.updateCourse(
+//                courseIdState = course.courseId,
+//                institutionNameState = course.institutionName,
+//                institutionTypeState = course.institutionType,
+//                courseLevelState = course.courseLevel,
+//                courseCategoryState = course.courseCategory,
+//                courseNameState = course.courseName
+//            )
+//        }
         Scaffold(
             topBar = {
                 CenterAlignedTopAppBar(

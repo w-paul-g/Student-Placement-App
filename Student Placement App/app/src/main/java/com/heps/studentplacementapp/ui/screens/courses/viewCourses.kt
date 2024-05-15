@@ -22,12 +22,9 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.shadow
@@ -45,21 +42,31 @@ import com.heps.studentplacementapp.navigation.ROUTE_SELECT_COURSE
 @Composable
 fun ViewCourses(navController: NavHostController){
     val context = LocalContext.current
-//    var course = Course()
+
     val courseViewModel =  CourseViewModel(
         navController = NavHostController(context),
         context = context
     )
-
-    var listOfCourses by remember { mutableStateOf(emptyList<Course>()) }
-    val course = remember { mutableStateOf(Course()) }
-    val courses = remember { mutableStateListOf<Course>() }
-    LaunchedEffect(Unit){
-        courseViewModel.viewCourses(
-            course,
-            courses
+    val emptyCourseState = remember {
+        mutableStateOf(
+            Course(
+                "",
+                "",
+                "",
+                "",
+                "",
+                ""
+            )
         )
     }
+    val emptyCoursesListState = remember {
+        mutableStateListOf<Course>()
+    }
+    val courses = courseViewModel.viewCourses(
+        emptyCourseState,
+        emptyCoursesListState
+    )
+
 
 //    LaunchedEffect(Unit) {
 //        courseViewModel.viewCourses{ courses ->

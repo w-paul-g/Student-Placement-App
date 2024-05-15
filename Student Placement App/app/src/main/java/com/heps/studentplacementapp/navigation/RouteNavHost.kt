@@ -12,11 +12,11 @@ import com.heps.studentplacementapp.ui.screens.account.SignInStudent
 import com.heps.studentplacementapp.ui.screens.account.SignOutAlert
 import com.heps.studentplacementapp.ui.screens.account.SignUpAdmin
 import com.heps.studentplacementapp.ui.screens.account.SignUpStudent
+import com.heps.studentplacementapp.ui.screens.adminDashboard.AdminDashboard
 import com.heps.studentplacementapp.ui.screens.courses.AddNewCourse
 import com.heps.studentplacementapp.ui.screens.courses.ManageCourses
 import com.heps.studentplacementapp.ui.screens.courses.UpdateCourse
 import com.heps.studentplacementapp.ui.screens.courses.ViewCourses
-import com.heps.studentplacementapp.ui.screens.adminDashboard.AdminDashboard
 import com.heps.studentplacementapp.ui.screens.dashboard.StudentDashboard
 import com.heps.studentplacementapp.ui.screens.home.HomeScreen
 import com.heps.studentplacementapp.ui.screens.selectedcourses.ManageSelectedCourses
@@ -28,7 +28,7 @@ import com.heps.studentplacementapp.ui.screens.selectedcourses.ViewSelectedCours
 fun RouteNavHost(
     modifier: Modifier = Modifier,
     navController: NavHostController = rememberNavController(),
-    startDestination:String = ROUTE_ADMIN_DASHBOARD,
+    startDestination: String ,
 ){
     var context = LocalContext.current
     NavHost(
@@ -69,14 +69,14 @@ fun RouteNavHost(
             ManageCourses(navController)
         }
         composable("$ROUTE_COURSE_UPDATE/{courseId}"){
-//            passedData ->
-//            UpdateCourse(
-//                navController,
-//                passedData.arguments?.getString("courseId")!!
-//            )
-                backStackEntry ->
-            val courseId = backStackEntry.arguments?.getString("courseId") ?: ""
-            UpdateCourse(navController, courseId)
+            passedData ->
+            UpdateCourse(
+                navController,
+                passedData.arguments?.getString("courseId")!!
+            )
+//                backStackEntry ->
+//            val courseId = backStackEntry.arguments?.getString("courseId") ?: ""
+//            UpdateCourse(navController, courseId)
         }
         composable(ROUTE_COURSE_VIEW){
             ViewCourses(navController)

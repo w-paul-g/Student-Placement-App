@@ -73,7 +73,6 @@ class SelectedCoursesViewModel(
                 }
                 listener(courses)
             }
-
             override fun onCancelled(error: DatabaseError) {
                 Toast.makeText(context, "Error: ${error.message}", Toast.LENGTH_SHORT).show()
             }
