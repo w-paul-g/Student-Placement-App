@@ -12,7 +12,6 @@ import com.heps.studentplacementapp.data.AdminAuthViewModel
 import com.heps.studentplacementapp.data.StudentAuthViewModel
 import com.heps.studentplacementapp.navigation.ROUTE_ADMIN_DASHBOARD
 import com.heps.studentplacementapp.navigation.ROUTE_HOME
-import com.heps.studentplacementapp.navigation.ROUTE_STUDENT_DASHBOARD
 import com.heps.studentplacementapp.navigation.RouteNavHost
 import com.heps.studentplacementapp.ui.theme.StudentPlacementAppTheme
 
@@ -37,10 +36,7 @@ class MainActivity : ComponentActivity() {
                     )
                     RouteNavHost(
                         startDestination =
-                        if(studentAccount.isSignedIn()){
-                            ROUTE_STUDENT_DASHBOARD
-                        }
-                        else if (adminAccount.isSignedIn()){
+                        if (adminAccount.isSignedIn()){
                             ROUTE_ADMIN_DASHBOARD
                         }
                         else{
