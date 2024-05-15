@@ -24,4 +24,5 @@ class Course {
         this.courseName = courseName
     }
     constructor()
+    constructor(courseIdState: String, institutionNameState: String, institutionTypeState: String, courseLevelState: String, courseCategoryState: String)
 }

@@ -1,4 +1,4 @@
-package com.heps.studentplacementapp.ui.screens.dashboard
+package com.heps.studentplacementapp.ui.screens.adminDashboard
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
@@ -11,7 +11,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Logout
 import androidx.compose.material.icons.filled.MoreHoriz
 import androidx.compose.material.icons.outlined.MoreHoriz
@@ -33,10 +32,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.navigation.NavHostController
-import androidx.navigation.compose.rememberNavController
+import androidx.navigation.NavController
 import com.heps.studentplacementapp.R
 import com.heps.studentplacementapp.navigation.ROUTE_COURSE_ADD
 import com.heps.studentplacementapp.navigation.ROUTE_COURSE_MANAGE
@@ -46,7 +43,7 @@ import com.heps.studentplacementapp.navigation.ROUTE_SIGNOUT
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun AdminDashboard(navController: NavHostController){
+fun AdminDashboard(navController: NavController){
     Scaffold(
         topBar = {
             LargeTopAppBar(
@@ -80,20 +77,6 @@ fun AdminDashboard(navController: NavHostController){
                             .fillMaxWidth(0.8f)
                             .padding(10.dp)
                     ) {
-                        DropdownMenuItem(
-                            leadingIcon = {
-                                Icon(
-                                    imageVector = Icons.Filled.Add,
-                                    contentDescription = ""
-                                )
-                            },
-                            text = {
-                                Text(text = "ADD COURSE")
-                            },
-                            onClick = {
-                                navController.navigate(ROUTE_COURSE_ADD)
-                            }
-                        )
                         DropdownMenuItem(
                             leadingIcon = {
                                 Icon(
@@ -135,9 +118,7 @@ fun AdminDashboard(navController: NavHostController){
                 ) {
                     Row {
                         Card(
-                            onClick = {
-                                navController.navigate(ROUTE_COURSE_ADD)
-                            },
+                            onClick = { navController.navigate(ROUTE_COURSE_ADD) },
                             modifier = Modifier
                                 .padding(10.dp)
                         ) {
@@ -152,9 +133,7 @@ fun AdminDashboard(navController: NavHostController){
                     }
                     Row {
                         Card(
-                            onClick = {
-                                navController.navigate(ROUTE_COURSE_MANAGE)
-                            },
+                            onClick = { navController.navigate(ROUTE_COURSE_MANAGE) },
                             modifier = Modifier
                                 .padding(10.dp)
                         ) {
@@ -192,18 +171,8 @@ fun AdminDashboard(navController: NavHostController){
 
                         }
                     }
-
                 }
             }
-
         }
     }
-
-}
-
-@Preview
-@Composable
-fun AdminDashboardPreview(){
-    AdminDashboard(navController = rememberNavController())
-
 }

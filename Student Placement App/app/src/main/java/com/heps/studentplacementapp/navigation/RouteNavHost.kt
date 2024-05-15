@@ -16,7 +16,7 @@ import com.heps.studentplacementapp.ui.screens.courses.AddNewCourse
 import com.heps.studentplacementapp.ui.screens.courses.ManageCourses
 import com.heps.studentplacementapp.ui.screens.courses.UpdateCourse
 import com.heps.studentplacementapp.ui.screens.courses.ViewCourses
-import com.heps.studentplacementapp.ui.screens.dashboard.AdminDashboard
+import com.heps.studentplacementapp.ui.screens.adminDashboard.AdminDashboard
 import com.heps.studentplacementapp.ui.screens.dashboard.StudentDashboard
 import com.heps.studentplacementapp.ui.screens.home.HomeScreen
 import com.heps.studentplacementapp.ui.screens.selectedcourses.ManageSelectedCourses
@@ -28,7 +28,7 @@ import com.heps.studentplacementapp.ui.screens.selectedcourses.ViewSelectedCours
 fun RouteNavHost(
     modifier: Modifier = Modifier,
     navController: NavHostController = rememberNavController(),
-    startDestination:String = ROUTE_HOME,
+    startDestination:String = ROUTE_ADMIN_DASHBOARD,
 ){
     var context = LocalContext.current
     NavHost(

@@ -265,10 +265,10 @@ fun SignUpStudent(
                                 context
                             )
                             studentSignUp.signup(
-                                studentName = studentName.trim(),
-                                email = email.trim(),
-                                password= password.trim(),
-                                confirmPassword= confirmPassword.trim()
+//                                studentName.trim(),
+                                email.trim(),
+                                password.trim(),
+                                confirmPassword.trim()
                             )
                             navController.navigate(ROUTE_STUDENT_DASHBOARD)
                         },

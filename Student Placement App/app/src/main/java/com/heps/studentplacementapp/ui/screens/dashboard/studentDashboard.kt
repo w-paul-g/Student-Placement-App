@@ -32,7 +32,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.navigation.NavHostController
+import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.heps.studentplacementapp.R
 import com.heps.studentplacementapp.navigation.ROUTE_SELECT_COURSE
@@ -42,7 +42,7 @@ import com.heps.studentplacementapp.navigation.ROUTE_VIEW_SELECTED_COURSES
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun StudentDashboard(navController: NavHostController){
+fun StudentDashboard(navController: NavController){
     Scaffold(
         topBar = {
             LargeTopAppBar(

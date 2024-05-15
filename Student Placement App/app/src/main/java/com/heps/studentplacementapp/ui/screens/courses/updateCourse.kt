@@ -73,12 +73,12 @@ fun UpdateCourse(
         }
         LaunchedEffect(courseId) {
             courseViewModel.updateCourse(
-                courseId = courseIdState.trim(),
-                institutionName = institutionNameState.trim(),
-                institutionType = institutionTypeState.trim(),
-                courseLevel = courseLevelState.trim(),
-                courseCategory = courseCategoryState.trim(),
-                courseName = courseNameState.trim()
+                courseIdState = course.courseId,
+                institutionNameState = course.institutionName,
+                institutionTypeState = course.institutionType,
+                courseLevelState = course.courseLevel,
+                courseCategoryState = course.courseCategory,
+                courseNameState = course.courseName
             )
         }
         Scaffold(
@@ -98,12 +98,12 @@ fun UpdateCourse(
                     actions = {
                         IconButton(onClick = {
                             courseViewModel.updateCourse(
-                                courseId = courseIdState,
-                                institutionName = institutionNameState,
-                                institutionType = institutionTypeState,
-                                courseLevel = courseLevelState,
-                                courseCategory = courseCategoryState,
-                                courseName = courseNameState
+                                courseIdState.trim(),
+                                institutionNameState.trim(),
+                                institutionTypeState.trim(),
+                                courseLevelState.trim(),
+                                courseCategoryState.trim(),
+                                courseNameState.trim()
                             )
                         }) {
                             Icon(

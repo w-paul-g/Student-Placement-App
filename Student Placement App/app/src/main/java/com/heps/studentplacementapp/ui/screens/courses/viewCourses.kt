@@ -8,6 +8,8 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBackIos
@@ -22,6 +24,7 @@ import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
@@ -42,19 +45,27 @@ import com.heps.studentplacementapp.navigation.ROUTE_SELECT_COURSE
 @Composable
 fun ViewCourses(navController: NavHostController){
     val context = LocalContext.current
-    var course = Course()
+//    var course = Course()
     val courseViewModel =  CourseViewModel(
         navController = NavHostController(context),
         context = context
     )
 
     var listOfCourses by remember { mutableStateOf(emptyList<Course>()) }
-
-    LaunchedEffect(Unit) {
-        courseViewModel.viewCourses{ courses ->
-            listOfCourses = courses
-        }
+    val course = remember { mutableStateOf(Course()) }
+    val courses = remember { mutableStateListOf<Course>() }
+    LaunchedEffect(Unit){
+        courseViewModel.viewCourses(
+            course,
+            courses
+        )
     }
+
+//    LaunchedEffect(Unit) {
+//        courseViewModel.viewCourses{ courses ->
+//            listOfCourses = courses
+//        }
+//    }
 
     Scaffold(
         topBar ={
@@ -103,12 +114,17 @@ fun ViewCourses(navController: NavHostController){
                 verticalArrangement = Arrangement.Center,
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                listOfCourses.forEach {  course ->
-                    CourseCardViewer(
-                        navController,
-                        course = course
-                    )
+                LazyColumn {
+                    items(courses) { course ->
+                        CourseCard(course = Course(), navController, courseViewModel)
+                    }
                 }
+//                listOfCourses.forEach {  course ->
+//                    CourseCardViewer(
+//                        navController,
+//                        course = course
+//                    )
+//                }
 
             }
         }

@@ -29,7 +29,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
-import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 import com.heps.studentplacementapp.data.CourseViewModel
 import com.heps.studentplacementapp.navigation.ROUTE_COURSE_MANAGE
@@ -38,7 +37,7 @@ import com.heps.studentplacementapp.navigation.ROUTE_COURSE_MANAGE
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun AddNewCourse(
-    navController: NavController
+    navController: NavHostController
 ){
     Box (
         modifier = Modifier
@@ -93,7 +92,7 @@ fun AddNewCourse(
                                     navController = NavHostController(context),
                                     context
                                 )
-                                courseDetail.addCourse(
+                                courseDetail.saveCourse(
                                     courseId.trim(),
                                     institutionName.trim(),
                                     institutionType.trim(),

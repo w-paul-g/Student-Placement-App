@@ -9,6 +9,8 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
@@ -29,6 +31,7 @@ import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
@@ -57,17 +60,22 @@ fun ManageCourses(navController: NavHostController,
     ){
 
         val context = LocalContext.current
-        val course = Course()
+//        val course = Course()
         val courseViewModel = CourseViewModel(
             navController = NavHostController(context),
             context
         )
         var listOfCourses by remember { mutableStateOf(emptyList<Course>()) }
-        LaunchedEffect(Unit) {
-            courseViewModel.viewCourses{ courses ->
-                listOfCourses = courses
-            }
+        val course = remember { mutableStateOf(Course()) }
+        val courses = remember { mutableStateListOf<Course>() }
+        LaunchedEffect(Unit){
+            courseViewModel.viewCourses(
+                course,
+                courses
+            )
         }
+
+
         Scaffold(
             topBar = {
                 CenterAlignedTopAppBar(
@@ -110,16 +118,20 @@ fun ManageCourses(navController: NavHostController,
                 contentAlignment = Alignment.Center
             ){
                 Column {
-
-                    listOfCourses.forEach { course ->
-                        CourseCard(
-                            course, navController = NavHostController(context),
-                            courseViewModel = CourseViewModel(
-                                NavHostController(context),
-                                context
-                            )
-                        )
+                    LazyColumn {
+                        items(courses) { course ->
+                            CourseCard(course = Course(), navController, courseViewModel)
+                        }
                     }
+//                    listOfCourses.forEach { course ->
+//                        CourseCard(
+//                            course, navController = NavHostController(context),
+//                            courseViewModel = CourseViewModel(
+//                                NavHostController(context),
+//                                context
+//                            )
+//                        )
+//                    }
                 }
             }
         }

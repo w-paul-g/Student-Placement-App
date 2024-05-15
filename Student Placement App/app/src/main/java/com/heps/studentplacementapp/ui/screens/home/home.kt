@@ -58,7 +58,7 @@ fun HomeScreen (navController: NavController){
                     modifier = Modifier
                         .padding(10.dp)
                 ) {
-                    Text("Welcome",
+                    Text("HEPS",
                         color = Color.White,
                         fontSize = 40.sp,)
                 }
@@ -68,7 +68,8 @@ fun HomeScreen (navController: NavController){
                         .padding(10.dp)
                 ) {
                     Text(text = """
-                            To HEPS App
+                            Welcome to our 
+                            Student Placement App
                         """.trimIndent(),
                         color = Color.White,
                         fontSize = 20.sp,)
