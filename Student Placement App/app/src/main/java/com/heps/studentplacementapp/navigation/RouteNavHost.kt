@@ -7,11 +7,11 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.heps.studentplacementapp.ui.screens.account.SignInAdmin
-import com.heps.studentplacementapp.ui.screens.account.SignInStudent
-import com.heps.studentplacementapp.ui.screens.account.SignOutAlert
-import com.heps.studentplacementapp.ui.screens.account.SignUpAdmin
-import com.heps.studentplacementapp.ui.screens.account.SignUpStudent
+import com.heps.studentplacementapp.ui.account.SignInAdmin
+import com.heps.studentplacementapp.ui.account.SignInStudent
+import com.heps.studentplacementapp.ui.account.SignOutAlert
+import com.heps.studentplacementapp.ui.account.SignUpAdmin
+import com.heps.studentplacementapp.ui.account.SignUpStudent
 import com.heps.studentplacementapp.ui.screens.adminDashboard.AdminDashboard
 import com.heps.studentplacementapp.ui.screens.courses.AddNewCourse
 import com.heps.studentplacementapp.ui.screens.courses.ManageCourses

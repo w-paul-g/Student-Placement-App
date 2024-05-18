@@ -1,4 +1,4 @@
-package com.heps.studentplacementapp.ui.screens.account
+package com.heps.studentplacementapp.ui.account
 
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.sharp.ExitToApp
@@ -16,7 +16,9 @@ import com.heps.studentplacementapp.navigation.ROUTE_HOME
 
 
 @Composable
-fun SignOutAlert(navController: NavController){
+fun SignOutAlert(
+    navController: NavHostController
+){
     AlertDialog(
         onDismissRequest = {
             navController.navigateUp()

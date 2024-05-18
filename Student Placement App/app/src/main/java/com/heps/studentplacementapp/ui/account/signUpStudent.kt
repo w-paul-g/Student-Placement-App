@@ -1,4 +1,4 @@
-package com.heps.studentplacementapp.ui.screens.account
+package com.heps.studentplacementapp.ui.account
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -40,7 +40,6 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
-import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 import com.heps.studentplacementapp.data.StudentAuthViewModel
 import com.heps.studentplacementapp.navigation.ROUTE_ADMIN_SIGNUP
@@ -51,7 +50,7 @@ import com.heps.studentplacementapp.navigation.ROUTE_STUDENT_SIGNIN
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun SignUpStudent(
-    navController: NavController
+    navController: NavHostController
 ){
     Box (
         modifier = Modifier

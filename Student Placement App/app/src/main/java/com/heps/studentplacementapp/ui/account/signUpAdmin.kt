@@ -1,4 +1,4 @@
-package com.heps.studentplacementapp.ui.screens.account
+package com.heps.studentplacementapp.ui.account
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -51,7 +51,7 @@ import com.heps.studentplacementapp.navigation.ROUTE_STUDENT_SIGNUP
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun SignUpAdmin(
-    navController: NavController
+    navController: NavHostController
 ) {
     Box(
         modifier = Modifier

@@ -40,7 +40,9 @@ import com.heps.studentplacementapp.navigation.ROUTE_SELECT_COURSE
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun ViewCourses(navController: NavHostController){
+fun ViewCourses(
+    navController: NavHostController
+){
     val context = LocalContext.current
 
     val courseViewModel =  CourseViewModel(

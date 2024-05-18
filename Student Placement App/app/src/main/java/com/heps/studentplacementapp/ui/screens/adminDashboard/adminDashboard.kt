@@ -33,7 +33,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import androidx.navigation.NavController
+import androidx.navigation.NavHostController
 import com.heps.studentplacementapp.R
 import com.heps.studentplacementapp.navigation.ROUTE_COURSE_ADD
 import com.heps.studentplacementapp.navigation.ROUTE_COURSE_MANAGE
@@ -43,7 +43,9 @@ import com.heps.studentplacementapp.navigation.ROUTE_SIGNOUT
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun AdminDashboard(navController: NavController){
+fun AdminDashboard(
+    navController: NavHostController
+){
     Scaffold(
         topBar = {
             LargeTopAppBar(
